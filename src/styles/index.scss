@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+@import 'reset';
+
+body {
+    text-rendering: optimizeLegibility;
+    font-kerning: normal;
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: 1.25em;
+    font-family: Roboto;
+    font-weight: 400;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+}
+
+.story {
+    padding: 1em;
+    font-family: 'Robot Slab', Serif;
+    border-bottom: 0.1em solid #ecdbcf;
+}
+
+.nice-border {
+    width: 100%;
+    border: 0.25em solid #242121;
+    position: fixed;
+}
