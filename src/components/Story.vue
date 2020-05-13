@@ -1,10 +1,16 @@
 <template>
-    <li class="story" v-i="story">
-        <h2>{{ story.title }}</h2>
-        <p>
-            (<a :href="`https://${storyUrl}`">{{ storyUrl }}</a
-            >)
-        </p>
+    <li class="story" v-if="story">
+        <div class="story-title">
+            <h2>
+                <router-link :to="{ name: 'Story', params: { id: id } }">{{
+                    story.title
+                }}</router-link>
+                <span
+                    >(<a v-bind:href="`https://${storyUrl}`">{{ storyUrl }}</a
+                    >)
+                </span>
+            </h2>
+        </div>
         <p>score: {{ story.score }}</p>
         <p>by {{ story.by }}</p>
         <p>{{ timeAgo }}</p>
@@ -37,9 +43,9 @@ export default {
     computed: {
         storyUrl() {
             try {
-                if (this.story) {
+                if (this.story.url) {
                     const url = new URL(this.story.url);
-                    console.log(this.story);
+
                     return url.hostname;
                 }
             } catch (e) {
@@ -52,7 +58,7 @@ export default {
         },
 
         timeAgo() {
-            if (this.story) {
+            if (this.story.time) {
                 const relativeTime = moment(this.story.time * 1000).from();
 
                 return relativeTime;
